@@ -1,0 +1,66 @@
+@startuml flight_record_system
+scale 1
+' skinparam style strictuml
+' Disables the icons on the class attributes (colored icons)
+' skinparam classAttributeIconSize 0 
+class Flight {
+  flight_num : String
+  planned_departure : Date
+  actual_departure : Date
+  planned_arrival : Date
+  actual_arrival : Date
+  /record
+}
+
+class Private
+class Non_Private as "Non-Private"
+
+class Cargo
+class Commercial
+
+class Airport {
+  name : String
+  code : String
+  /record
+}
+
+class City {
+  name : String
+  country : String
+  /temp_record
+}
+
+class Aircraft {
+  status: FlightStatus
+}
+
+enum FlightStatus {
+  InTransit
+  AtAirport
+}
+' Aircraft -[hidden]> FlightStatus
+
+class Airline {
+  /record
+}
+
+
+' Relationships
+Flight --|> Private
+Flight --|> Non_Private
+
+Non_Private --|> Cargo
+Non_Private --|> Commercial
+Non_Private "*" -- "1" Airline : handled by
+
+Flight "*" -* "1" Airport : source
+Flight "*" -* "1" Airport : destination
+Flight "1..*" -* "1" Aircraft
+
+Airport "0..*" -- "1" City
+
+Airline "1" -o "1..*" Aircraft
+
+Private "*" -- "2" Airport : managed by
+
+@enduml
