@@ -3,6 +3,8 @@ scale 1
 ' skinparam style strictuml
 ' Disables the icons on the class attributes (colored icons)
 ' skinparam classAttributeIconSize 0 
+hide empty members
+
 class Flight {
   flight_num : String
   planned_departure : Date
@@ -38,7 +40,6 @@ enum FlightStatus {
   InTransit
   AtAirport
 }
-' Aircraft -[hidden]> FlightStatus
 
 class Airline {
   /record
@@ -59,7 +60,7 @@ Flight "1..*" -* "1" Aircraft
 
 Airport "0..*" -- "1" City
 
-Airline "1" -o "1..*" Aircraft
+Airline "1" --o "1..*" Aircraft
 
 Private "*" -- "2" Airport : managed by
 
