@@ -1,0 +1,9 @@
+@startuml Sequence Diagram
+scale 1
+' skinparam style strictuml
+' Disables the icons on the class attributes (colored icons)
+' skinparam classAttributeIconSize 0 
+
+' Create a System Sequence Diagram for the success scenario of Use Case Processing Annotations and identify System Operations.
+hide empty members
+@enduml

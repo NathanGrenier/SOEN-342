@@ -1,0 +1,12 @@
+@startuml Domain Model
+scale 1
+' skinparam style strictuml
+' Disables the icons on the class attributes (colored icons)
+' skinparam classAttributeIconSize 0 
+
+' Define an operation contract for addAnnotation(..) Clearly identify:
+' - Elements of the contract that form the obligation of the client.
+' - Elements of the contract form the obligation of the supplier.
+' - The different types of postconditions. 
+hide empty members
+@enduml

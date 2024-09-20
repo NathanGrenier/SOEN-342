@@ -1,0 +1,9 @@
+@startuml Domain Model
+scale 1
+' skinparam style strictuml
+' Disables the icons on the class attributes (colored icons)
+' skinparam classAttributeIconSize 0 
+
+' Create a UML Interaction Diagram (either a Sequence Diagram or a Communications Diagram for operation addAnnotation(..)
+hide empty members
+@enduml

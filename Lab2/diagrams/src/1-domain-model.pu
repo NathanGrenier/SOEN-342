@@ -1,0 +1,9 @@
+@startuml Domain Model
+scale 1
+' skinparam style strictuml
+' Disables the icons on the class attributes (colored icons)
+' skinparam classAttributeIconSize 0 
+
+' Create a UML domain model.
+hide empty members
+@enduml
