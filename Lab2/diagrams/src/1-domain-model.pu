@@ -6,4 +6,60 @@ scale 1
 
 ' Create a UML domain model.
 hide empty members
+
+class Map {
+    annotations: Set<idType>
+}
+
+class Annotations {
+    id: idType
+    location: Location
+    description: Description 
+} 
+
+class Location {
+    x: float
+    y: float 
+} 
+
+class Description {
+    type: string
+    name: string
+    /description
+}
+
+class Console {
+
+}
+
+class User {
+
+}
+
+' Subclasses for location and description
+abstract class Catalog <T> {
+    catalog: Map<T>
+}
+
+class DescriptionCatalog {
+
+}
+
+class LocationCatalog {
+
+}
+
+Catalog <|-- DescriptionCatalog
+Catalog <|-- LocationCatalog
+
+Map "1" --o  "*" Annotations
+
+Console "1" -- "1" Map
+
+Location "*" -up-* "1" LocationCatalog
+Description "*" -up-* "1" DescriptionCatalog
+
+User "1" -- "1" Console : Accesses >
+
+Console "1" - "     1" Catalog
 @enduml
