@@ -1,0 +1,14 @@
+@startuml
+
+actor Clerk
+participant System
+
+Clerk -> System: initiateLoan()
+|||
+loop i = 1..3 (until all books are scanned)
+    Clerk -> System: scanLoanItem(serialNumber)
+    Clerk <-- System: confirmation beep
+end
+|||
+Clerk -> System: endLoan()
+@enduml

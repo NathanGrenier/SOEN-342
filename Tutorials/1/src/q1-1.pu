@@ -1,0 +1,43 @@
+@startuml
+hide empty members
+
+class BookCatalog {}
+
+class BookDetails {
+    ISBN: string
+    title: string
+    /quantity: int
+}
+
+class BookCopy {
+    serialNumber: string
+    isAvailable: boolean
+}
+
+class User {}
+
+class Terminal {}
+
+class Loan {
+    userId: int
+    loanDate: Date
+    dueDate: Date
+    returnAt: Date
+}
+
+class LoanItem {}
+
+BookCatalog "1" *-- "1" BookDetails
+
+BookDetails "1" -- "1..*" BookCopy
+
+User "1" -- "1" Terminal: interfaces
+
+Terminal "1" -- "1" Loan: loan book
+Terminal "1" -- "1" BookCatalog
+
+Loan "1" *-- "0..3" LoanItem
+
+LoanItem "1" - "1" BookDetails
+
+@enduml
