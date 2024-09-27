@@ -1,0 +1,43 @@
+@startuml Domain Model
+scale 1
+' skinparam style strictuml
+' Disables the icons on the class attributes (colored icons)
+' skinparam classAttributeIconSize 0 
+
+' Create a UML domain model.
+hide empty members
+
+class Package {
+    id: TrackingType
+    currentLocation: Location
+}
+
+class Office {}
+
+class Location {}
+
+class Locations {}
+
+class PackageCatalog {}
+
+class LocationHistory {}
+
+class Console {}
+
+class User {}
+
+User "1" -- "1" Console
+
+Console "1" -- "1" PackageCatalog
+
+Location "1" <|-- "1" Office
+
+Location "1" - "*" Package: source
+Location "1" - "*" Package: destination
+Location --* Locations
+
+Package "1" *-- "1" LocationHistory
+Package "*" -* "1" PackageCatalog
+
+
+@enduml

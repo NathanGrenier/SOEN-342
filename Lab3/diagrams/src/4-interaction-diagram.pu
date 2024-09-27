@@ -1,0 +1,31 @@
+@startuml Sequence Diagram registerPackage(origin, destination)
+scale 1
+' skinparam style strictuml
+
+hide empty members
+
+actor User as ":User"
+
+participant Console as ":Console" order 10
+participant PackageCatalog as "PackageCatalog" order 20
+participant Package as "__p:Package__" order 30
+
+User -> Console: startSession()
+|||
+
+loop until User ends session
+    User -> Console: update_location(id, new_location)
+
+    Console -> PackageCatalog: updateLocation(id, new_location)
+
+    PackageCatalog -> PackageCatalog: p:getPackage(id)
+
+    PackageCatalog -> Package: updateLocation(new_location)
+    PackageCatalog <-- Package: success confirmation
+
+    Console <-- PackageCatalog: success confirmation
+    User <-- Console: success confirmation
+end
+User -> Console: endSession()
+
+@enduml

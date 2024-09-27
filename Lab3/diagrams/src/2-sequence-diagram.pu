@@ -1,0 +1,42 @@
+@startuml Sequence Diagram registerPackage(origin, destination)
+scale 1
+' skinparam style strictuml
+
+hide empty members
+
+actor User as ":User"
+
+participant Console as ":Console" order 10
+participant PackageCatalog as "PackageCatalog" order 20
+collections PackageCatalogCol as ":PackageCatalog" order 40
+participant Package as ":Package" order 30
+participant Location as ":Location" order 50
+collections LocationHistory as ":LocationHistory" order 60
+
+User -> Console: startSession()
+|||
+
+loop until User ends session
+    User -> Console: registerPackage(origin, destination)
+    Console -> PackageCatalog: createID(origin, destination)
+    PackageCatalog -> Package: createPackage(id, origin, destination)
+
+    loop for each location including and between source and destination
+        Package -> Location: createLocation(origin, destination)
+        Package <- Location: l:new Location
+        |||
+        Package -> LocationHistory: addLocation(l)
+    end
+
+    PackageCatalog <- Package: p:new Package
+    |||
+    PackageCatalog -> PackageCatalogCol: addPackage(p)
+
+
+
+    Console <-- PackageCatalog: success confirmation
+    User <-- Console: success confirmation  
+end
+User -> Console: endSession()
+
+@enduml
