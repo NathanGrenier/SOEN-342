@@ -1,0 +1,47 @@
+@startuml
+hide empty members
+
+class Flight {
+    date: Date
+    departureTime: Time
+    arrivalTime: Time
+    duration: Time
+    capacity: int 'Might be derived
+}
+
+class Ticket {
+    discounted: Boolean
+}
+
+class Airport {
+    name: String
+}
+
+class Airline {}
+
+class TicketCatalog {
+    tickets: List<Ticket>
+}
+
+class Passengers {
+    id: String
+    name: String
+    age: int
+}
+
+class VIPPassenger {}
+
+Flight "*" - "1" Airport: departs from
+Flight "*" - "1" Airport: arrives at
+Flight "*" -- "1" Airline: handled by
+
+Airline "1" -- "1" TicketCatalog: maintains
+
+TicketCatalog "1" *-left- "*" Ticket
+
+Passengers "*" - "* " Flight
+Passengers <|-- VIPPassenger
+Passengers "1" - "0, 1" Passengers: accompanied by
+
+(Passengers, Flight) .. Ticket
+@enduml
