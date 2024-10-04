@@ -4,10 +4,10 @@ hide empty members
 participant Console as "__:Console__"
 participant Map as "__:Map__"
 collections MappedItems as "__:MappedItem__"
-participant MappedItem as "__**mapItem**:MappedItem__"
+participant MappedItem as "**mapItem**__:MappedItem__"
 participant Read as "__:Read__"
 collections ReadItems as "__:ReadItem__"
-participant ReadItem as "__**readItem**:ReadItem__"
+participant ReadItem as "**readItem**__:ReadItem__"
 
 -> Console: getTemperature(location)
 |||
