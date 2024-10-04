@@ -1,0 +1,29 @@
+@startuml Sequence Diagram getTemperature(Location)
+hide empty members
+
+participant Console as "__:Console__"
+participant Map as "__:Map__"
+collections MappedItems as "__:MappedItem__"
+participant MappedItem as "__**mapItem**:MappedItem__"
+participant Read as "__:Read__"
+collections ReadItems as "__:ReadItem__"
+participant ReadItem as "__**readItem**:ReadItem__"
+
+-> Console: getTemperature(location)
+|||
+Console -> Map: getMapItem(location)
+Map -> MappedItems: find(location)
+Map <-- MappedItems: mapItem
+Console <-- Map: mapItem
+Console -> MappedItem: getSensorItem()
+Console <-- MappedItem: sensorItem
+|||
+Console -> Read: getReadingItem(sensorItem)
+Read -> ReadItems: find(sensorItem)
+Read <-- ReadItems: readItem
+Console <-- Read: readItem
+Console -> ReadItem: getTemperature()
+Console <-- ReadItem: temperature
+|||
+<-- Console: temperature
+@enduml
