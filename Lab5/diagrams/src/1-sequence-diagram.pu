@@ -1,0 +1,22 @@
+@startuml q1 Sequence Diagram
+participant Passenger as "p:__Passenger__"
+participant Station as ":__Station__"
+participant Connection as "c:__Connection__"
+collections Connections as "__Connections__"
+
+Passenger -> Station: makeReservation(departureTime)
+
+Station -> Connections: find(departureTime)
+return c
+Passenger <-- Station: c
+
+Passenger -> Connection: isFull(c)
+return false
+
+
+Passenger -> Connection: reserve(p)
+
+Connection -> Connections: update(p)
+return success
+Passenger <-- Connection: success
+@enduml

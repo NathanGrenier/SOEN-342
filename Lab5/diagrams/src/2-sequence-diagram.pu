@@ -1,0 +1,20 @@
+@startuml q2 Sequence Diagram
+participant Console as ":__Console__"
+participant Contract as "contract:__Contract__"
+' participant Consultant as "c:__Consultant__"
+' participant Employer as "e:__Employer__"
+collections Employers as ":__Employers__"
+collections Consultants as ":__Consultants__"
+collections Contracts as ":__Contracts__"
+
+-> Console: issueContract(consultant, employer)
+
+Console ->  Employers: find(employer)
+return e
+Console ->  Consultants: find(consultant)
+return c
+|||
+Console -> Contract **: create(e, c)
+return contract
+Console -> Contracts: add(contract)
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Human {
+    ~ name: String
+    + {static} description: String
+    + {abstract} void speak()
+    + {static} void whatAmI()
+}
+
+class Commoner extends Human {
+    + void speak()
+}
+
+class Noble extends Human {
+    ~ house: String
+    + Noble(String: name, String house)
+    + Noble(String: name)
+    + void speak()
+    + String toString() 
+}
+
+interface Faceless {
+    + void declare()
+    + String declare(String str)
+}
+
+class Free extends Noble implements Faceless {
+    + Free(String: name)
+    + void declare()
+    + String declare(String str)
+}
+
+class NightWatch extends Noble {
+    + NightWatch(String: name)
+    + void speak()
+}   
+@enduml
