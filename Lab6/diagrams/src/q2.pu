@@ -1,0 +1,75 @@
+@startuml Problem_2
+skinparam linetype ortho
+
+' skinparam classAttributeIconSize 0
+
+' Provide an explanation and a rationale for your model. The requirements' are as follows:
+' 1. Good performance. We want to avoid accessing multiple tables(particularly the one that corresponds to the root class) often, in order to retrieve a record.
+' 2. No wasted space in memory.
+' 3. No complex queries.`
+
+' Explanation:
+' 1: Since every table contains all of the attributes necessary to create an object, only 1 lookup is required.
+' 2: Since every table contains all of the attributes necessary to create an object and only those attributes, no extra space is wasted.
+' 3: Since every table contains all of the attributes necessary to create an object, no complex queries are required. We don't have to perform SQL joins on supertables to get a classes' required attributes.
+
+
+!define PK <&key>
+!define FK <&link-intact>
+
+entity Private {
+    PK P_ID: int
+    --
+    FK M_ID: int
+    P_NUMBER: int
+    P_DATE: date
+    P_DEPARTURE: string
+    P_ARRIVAL: string
+    P_AIRCRAFT_TYPE: string
+}
+
+entity Gov {
+    PK G_ID: int
+    --
+    FK M_ID: int
+    G_NUMBER: int
+    G_DATE: date
+    G_DEPARTURE: string
+    G_ARRIVAL: string
+    G_AIRCRAFT_TYPE: string
+    G_OWNER: Agency 
+}
+
+entity Maintenance {
+    PK M_ID: int
+    --
+    M_NAME: string
+    M_HOME: City
+}
+
+entity Commercial {
+    PK COM_ID: int
+    --
+    COM_NUMBER: int
+    COM_DATE: date
+    COM_DEPARTURE: string
+    COM_ARRIVAL: string
+    COM_AIRCRAFT_TYPE: string
+    COM_CARRIER: string
+    COM_HOME: City
+    COM_CAPACITY: int
+}
+
+entity Cargo {
+    PK C_ID: int
+    --
+    C_NUMBER: int
+    C_DATE: date
+    C_DEPARTURE: string
+    C_ARRIVAL: string
+    C_AIRCRAFT_TYPE: string
+    C_CARRIER: string
+    C_HOME: City
+    C_MAX_LOAD: int
+}
+@enduml

@@ -1,0 +1,18 @@
+@startuml Problem_3
+skinparam linetype ortho
+
+' skinparam classAttributeIconSize 0
+
+!define PK <&key>
+!define FK <&link-intact>
+
+entity Ticket {
+    PK T_ID: int
+    --
+    FK P_ID: int
+    FK C_ID: int
+    FK RC_ID: int
+    T_VALID: boolean
+    T_DISCOUNTED: boolean
+}
+@enduml

@@ -1,0 +1,40 @@
+@startuml Problem_1
+skinparam linetype ortho
+
+' skinparam classAttributeIconSize 0
+
+!define PK <&key>
+!define FK <&link-intact>
+
+entity Aircraft {
+    PK AIRCRAFT_ID: int 
+}
+
+entity Flight {
+    PK F_ID: int
+    --
+    FK AIRCRAFT_ID: int
+    FK AIRPORT_SOURCE_ID: int
+    FK AIRPORT_DESTINATION_ID: int | null
+    F_NUMBER: int
+    F_DATE: date
+    F_DEPARTURE: date
+    F_ARRIVAL: date
+}
+
+entity Airport {
+    PK AIRPORT_ID: int
+    --
+    FK C_ID: int
+    AIRPORT_NAME: string
+    AIRPORT_CODE: int
+}
+
+entity City {
+    PK C_ID: int
+    --
+    C_NAME: string
+    C_COUNTRY: string
+    C_TEMPERATURE: float
+}
+@enduml
