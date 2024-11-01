@@ -1,0 +1,5 @@
+Question: A registration for an undergraduate student can only be issued provided that the student’s program is offered by their Department.
+
+context Registration
+    inv: self.student.oclIsTypeOf(Undergraduate)
+        implies self.student.department.program -> includes(self.student.program) = True

@@ -1,0 +1,5 @@
+Question: An undergraduate student majoring in engineering may not register for less than 3 courses on a fall term.
+
+context Undergraduate
+    inv: self.major = "Engineering"
+        implies self.registration -> select(i | i.term = "fall") -> size() >= 3

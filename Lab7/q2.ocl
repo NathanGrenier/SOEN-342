@@ -1,0 +1,5 @@
+Question: Registrations for any 600-level course can only be offered to graduate students.
+
+context Registration
+    inv: self.course.level = 600
+        implies self.student.oclIsTypeOf(Graduate) 

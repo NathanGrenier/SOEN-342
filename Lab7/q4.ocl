@@ -1,0 +1,5 @@
+Question: A Department may not issue a Registration for a course not offered by the Department. 
+(i.e. All registrations issued by a Department are on courses offered by the Department)
+
+context Registration
+    inv: self.department.offers -> includes(self.course) = True

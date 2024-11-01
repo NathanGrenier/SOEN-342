@@ -1,0 +1,8 @@
+Question: A Department issues registrations per unique student-course pair. Define an appropriate OCL expression for operation issueRegistration(..) in class Department. Use the template provided on the next page.
+
+context Department::issueRegistration(student Student, course Course)
+    -- No registration already exists for this student-course pair.
+    pre: self.registration -> exists(r:Registration | r.course.number = course.number and r.student.id = student.id) = False 
+    
+    -- A registration has been issued for this student-course pair
+    post: self.registration -> exists(r:Registration | r.course.number = course.number and r.student.id = student.id) = True
