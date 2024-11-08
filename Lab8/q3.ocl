@@ -1,0 +1,4 @@
+Question: A theater can only issue a ticket for a movie that it hosts.
+
+context Theater::issueTicket(p: Person, m: Movie)
+    pre: self.movie -> includes(m)

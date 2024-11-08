@@ -1,0 +1,5 @@
+Question: A scooter can only be rented out to a customer with a license type 6.
+
+context Rental:
+    inv: self.vehicle.oclIsTypeOf(Scooter) implies
+        self.customer.license -> exists(l : License | l.type = 6)

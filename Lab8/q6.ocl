@@ -1,0 +1,4 @@
+Question: "To be designated as a manager, one is expected to have worked on more than five advanced assignments." (‘advanced’ is a value of attribute type in class Assignment.)
+
+context Manager:
+    inv: self.assignment -> select(a : Assignment | a.type = 'advanced') -> size() > 5

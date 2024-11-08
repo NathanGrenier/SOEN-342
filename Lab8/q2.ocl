@@ -1,0 +1,4 @@
+Question: No rental can be issued for a blacklisted customer.
+
+context Rental:
+    not self.customer.oclIsTypeOf(Blacklisted)

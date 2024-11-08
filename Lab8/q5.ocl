@@ -1,0 +1,4 @@
+Question: "Each deployment should be on a unique location." Assume that attribute ‘coord’ is a pair of GPS coordinates, where coord objects can be compared with operations = and <>.
+
+context Catalog:
+    inv: self.deployment -> forAll(d1, d2 : Deployment | d1 <> d2 implies d1.location.coord <> d2.location.coord)

@@ -1,0 +1,4 @@
+Question: The number of tickets for a movie cannot exceed the capacity of the auditorium where the movie is hosted.
+
+context Movie:
+    inv: self.ticket -> size() <= self.auditorium.capacity
